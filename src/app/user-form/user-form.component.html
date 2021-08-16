@@ -1,0 +1,39 @@
+<form #userForm='ngForm' (ngSubmit)="PostData(userForm)">
+  <div>
+  <label for="firstName">First Name</label>
+  <input required minlength="3" name="firstName" maxlength="10" pattern="^[a-zA-Z]+$" #firstName="ngModel" ngModel/>
+  <div *ngIf="firstName.touched && !firstName.valid"> 
+    <!-- First Name is not valid -->
+    <div *ngIf="firstName.errors.required"> FirstName is must </div>
+  <div *ngIf="firstName.errors.minlength"> Min 3 characters needed </div>  
+  <div *ngIf="firstName.errors.pattern"> Pattern is not matched </div> 
+  </div>
+</div>
+
+<div>
+  <label for="email">
+  Email
+  </label> 
+  <input type="email"
+  class="form-control"
+  name="email"
+  ngModel
+  minlength="10"
+  required
+  pattern="[^ @]*@[^ @]*"
+  #email="ngModel">
+
+  <div>
+    <div class="form-control-feedback"
+    *ngIf="email.errors && (email.dirty || email.touched)">
+ <p *ngIf="email.errors.required">Email is required</p>
+ <p *ngIf="email.errors.minlength">Email must contain at least the 10 character</p>
+ <p *ngIf="email.errors.pattern">Email must contain @ character</p>
+
+</div>
+
+</div>
+</div> 
+ 
+<button type="submit" [disabled]="!userForm.valid"> Submit </button>
+  </form>

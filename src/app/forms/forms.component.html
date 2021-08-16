@@ -1,0 +1,32 @@
+<div>
+<form #refForm='ngForm' (ngSubmit)="Add(refForm)">
+  <div>
+    <label for="txtNo1"> Enter No 1 </label>
+    <input type="number" name="txtNo1" ngModel #no1="ngModel" required min="10" max="50"/>
+    <div *ngIf="no1.errors && (no1.dirty || no1.touched)">
+
+      <div *ngIf="no1.errors.required"> No1 is must </div>
+      <div *ngIf="no1.errors.min"> 10 is min value </div>
+      <div *ngIf="no1.errors.max"> 50 is max value </div>
+     </div> 
+  </div>
+
+    <div>
+      <label for="txtNo2"> Enter No 2</label>
+      <input type="number" name="txtNo2" ngModel #no2="ngModel" required min="0" max ="100"/>
+      <div *ngIf="no2.touched && !no2.valid"> 
+        <div *ngIf="no2.errors.required"> No2  is must </div>
+        <div *ngIf="no2.errors.min"> 0 is min value </div>
+        <div *ngIf="no2.errors.max"> 100 is max value </div>
+        
+      </div>
+    </div>
+    <div>
+      <label for="txtResult"> Result </label>
+      <input type="number" name="txtResult" ngModel [value]= "result"/>
+    </div>
+    <div>
+      <button type="submit"> Add </button>
+    </div>
+    </form>
+  </div>
