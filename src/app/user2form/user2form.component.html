@@ -1,0 +1,104 @@
+<!-- <p>
+  <mat-toolbar>
+    <span>My Application</span>
+  </mat-toolbar>
+</p>
+<p>
+  <mat-toolbar>
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+   <mat-icon>share</mat-icon>
+ </button>
+</mat-toolbar>
+</p>
+
+<mat-toolbar-row>
+  <span>Second Line</span>
+  <span class="example-spacer"></span>
+  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+</mat-toolbar-row>
+<mat-card>Simple card</mat-card>
+  <mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card> -->
+<form [formGroup]="signUp" (ngSubmit) ="PostData(signUp)">
+  <div>
+  <label for="txtfName"> Enter First Name </label>
+  <input type="text" name="txtfName" formControlName="firstName" required placeholder="Enter First Name"/>
+<div *ngIf="signUp.controls['firstName'].hasError('required')">
+  First Name is must
+</div>
+<div *ngIf="signUp.controls['firstName'].hasError('minlength')">
+ Minimum 10 charactes are needed
+</div>
+
+<div *ngIf="signUp.controls['firstName'].hasError('pattern')">
+  Only alphabets are allowed
+ </div>
+</div>
+<div>
+  <label for="txtlName"> Enter Last Name </label>
+  <input type="text" name="txtlName" formControlName="lastName" required placeholder="Enter Last Name"/>
+  <div *ngIf="signUp.controls['lastName'].hasError('required')">
+    Last Name is must
+  </div>
+</div>
+
+<div>
+  <label for="txtEmail"> Enter Email </label>
+  <input type="text" name="txtEmail" formControlName="email" placeholder="Enter EMail"/>
+  <div *ngIf="signUp.controls['email'].hasError('required')">
+    Email is must
+  </div>
+</div>
+
+
+<div>
+  <label for="txtAge"> Enter Age </label>
+  <input type="text" name="txtAge" formControlName="age" placeholder="Enter Age"/>
+  <div *ngIf="signUp.controls['age'].hasError('ageRange')">
+    Age should be in range 18 - 48
+  </div>
+</div>
+
+<div>
+  <label for="txtPassword"> Enter Password </label>
+  <input type="text" name="txtPassword" formControlName="password"  placeholder="Enter Password"/>
+  <div *ngIf="signUp.controls['password'].hasError('required')">
+   password must
+  </div>
+  
+</div>
+<div>
+  <label for="txtMarks"> Enter Marks </label>
+  <input type="text" name="txtMarks" formControlName="marks"  placeholder="Enter Marks"/>
+  <div *ngIf="signUp.controls['marks'].hasError('min')">
+   Min marks are 50
+  </div>
+  
+</div>
+<button type="submit"> Submit </button>
+</form>  
